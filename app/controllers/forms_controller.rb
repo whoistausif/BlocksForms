@@ -84,3 +84,16 @@ class FormsController < ApplicationController
   end
 
 end
+
+def edit
+  @form = Form.find(params[:id])
+end
+
+def update
+  @form = Form.find(params[:id])
+  if @form.update(form_params)
+    redirect_to @form, notice: "Form updated successfully"
+  else
+    render :edit
+  end
+end
